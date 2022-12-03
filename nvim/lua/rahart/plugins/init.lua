@@ -1,0 +1,5 @@
+require("rahart.plugins.nvim-tree")
+require("rahart.plugins.nvim-cmp")
+require("rahart.plugins.lsp.mason")
+require("rahart.plugins.lsp.comment")
+require("rahart.plugins.lsp.lspconfig")
