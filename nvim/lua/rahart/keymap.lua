@@ -1,23 +1,3 @@
--- local M = {}
---
--- local function bind(op, outer_opts)
---     outer_opts = outer_opts or {noremap = true}
---     return function(lhs, rhs, opts)
---         opts = vim.tbl_extend("force",
---             outer_opts,
---             opts or {}
---         )
---         vim.keymap.set(op, lhs, rhs, opts)
---     end
--- end
---
--- M.nmap = bind("n", {noremap = false})
--- M.nnoremap = bind("n")
--- M.vnoremap = bind("v")
--- M.xnoremap = bind("x")
--- M.inoremap = bind("i")
--- local keymap = vim.keymap.set
-
 -- Insert mode
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
@@ -47,7 +27,7 @@ vim.keymap.set("n", "<leader><leader>h", "<cmd>lua package.loaded.rahart=nil<cr>
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
 -- telecscope
-vim.keymap.set("n", "<leader>ff", ":Telescope find_files<cr>")
+vim.keymap.set("n", "<leader>ff", ":Telescope find_files hidden=true<cr>")
 vim.keymap.set("n", "<leader>gr", ":Telescope live_grep<cr>")
 vim.keymap.set("n", "<leader>gf", ":Telescope git_files<cr>")
 vim.keymap.set("n", "<leader>gc", ":Telescope git_commits<cr>")

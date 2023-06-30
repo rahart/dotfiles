@@ -29,6 +29,7 @@ return require('packer').startup(function(use)
   use ("nvim-lua/plenary.nvim")
   use ("nvim-lua/telescope.nvim")
   use ("jremmen/vim-ripgrep")
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   -- commenting
   use ("numToStr/Comment.nvim")
