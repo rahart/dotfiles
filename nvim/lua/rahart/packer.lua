@@ -49,10 +49,63 @@ return require('packer').startup(function(use)
   use ("saadparwaiz1/cmp_luasnip")
   use ("hrsh7th/cmp-nvim-lua")
   use ("hrsh7th/cmp-nvim-lsp")
-
   -- snippets
   use ("L3MON4D3/LuaSnip")
   use("rafamadriz/friendly-snippets")
+
+  -- notes
+  -- use {'nvim-orgmode/orgmode', config = function()
+  --   require('orgmode').setup{}
+  -- end
+  -- }
+  -- use {
+  --   'renerocksai/telekasten.nvim',
+  --   requires = {'nvim-telescope/telescope.nvim'}
+  -- }
+  use {
+    "vimwiki/vimwiki",
+    config = function()
+      vim.g.vimwiki_list = {{
+          path = "/Users/travisharrington/brain",
+          syntax = "markdown",
+          ext = ".md",
+          links_space_char = "_",
+          auto_diary_index = 1,
+          diary_rel_path = "daylog/",
+          diary_index = "daylog",
+          diary_header = "Daylog",
+      }}
+      vim.g.vimwiki_ext2syntax = {
+        [".md"] = "markdown",
+        [".markdown"] = "markdown",
+        [".mdown"] = "markdown",
+      }
+    end
+  }
+  -- use {
+  --   "nvim-neorg/neorg",
+  --   run = ":Neorg sync-parsers",
+  --   config = function()
+  --     require("neorg").setup{
+  --       load = {
+  --         ["core.defaults"] = {}, -- Load default behavior
+  --         ["core.concealer"] = {}, -- Pretty icons
+  --         ["core.dirman"] = {
+  --           config = {
+  --             default_workspace = "notes",
+  --             workspaces = {
+  --               notes = "~/notes"
+  --             }
+  --           }
+  --         },
+  --         ["core.qol.todo_items"] = {},
+  --       }
+  --     }
+  --   end,
+  -- }
+
+
+
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

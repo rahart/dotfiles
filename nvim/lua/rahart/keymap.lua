@@ -1,5 +1,7 @@
 -- Insert mode
 vim.keymap.set("i", "<C-c>", "<Esc>")
+vim.keymap.set("i", "<C-d>", "<cmd>r!date<CR>") -- use date snippet instead of this shortcut.
+vim.api.nvim_set_keymap("i", "<C-M>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
 -- Visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -23,8 +25,11 @@ vim.keymap.set("n", "<C-s>", ":wa!<cr>") -- save all files in buffers
 vim.keymap.set("n", "<leader><leader>s", "<cmd>lua package.loaded.rahart=nil<cr>:source ~/.config/nvim/init.lua<CR>")
 vim.keymap.set("n", "<leader><leader>h", "<cmd>lua package.loaded.rahart=nil<cr>:source %<CR>")
 
-
 vim.keymap.set("x", "<leader>p", "\"_dP")
+
+--
+vim.keymap.set("n", "<leader>cd", "<cmd>Copilot disable<cr>")
+vim.keymap.set("n", "<leader>ce", "<cmd>Copilot enable<cr>")
 
 -- telecscope
 vim.keymap.set("n", "<leader>ff", ":Telescope find_files hidden=true<cr>")
@@ -48,3 +53,6 @@ vim.keymap.set("n", "<leader>tr", ":NvimTreeToggle<cr>")
 -- Packer
 vim.keymap.set("n", "<C-i>", ":PackerInstall<cr>")
 
+-- Luasnip in configfile
+-- reload config
+vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>")

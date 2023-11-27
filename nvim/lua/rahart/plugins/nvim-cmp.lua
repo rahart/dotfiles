@@ -26,12 +26,14 @@ cmp.setup({
     ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
     ["<C-e>"] = cmp.mapping.abort(), -- close completion window
     ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    ["<Tab>"] = cmp.config.disable,
   }),
   -- sources for autocompletion
   sources = cmp.config.sources({
     { name = "buffer" }, -- text within current buffer
     { name = "path" }, -- file system paths
     { name = "nvim_lsp"},
+    { name = "luasnip"},
   }),
   -- configure lspkind for vs-code like icons
   formatting = {

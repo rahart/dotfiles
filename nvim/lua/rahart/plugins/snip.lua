@@ -2,7 +2,6 @@ local ls = require("luasnip")
 local fmt = require("luasnip.extras.fmt").fmt
 local fmta = require("luasnip.extras.fmt").fmta
 local rep = require("luasnip.extras").rep
-
 local snip = ls.snippet
 local node = ls.snippet_node
 local text = ls.text_node
@@ -11,14 +10,60 @@ local func = ls.function_node
 local choice = ls.choice_node
 local dynamicn = ls.dynamic_node
 
+require("luasnip.loaders.from_lua").lazy_load({paths = "~/.config/nvim/snippets/"})
+ls.config.set_config({
+  history = true,
+  updateevents = "TextChanged,TextChangedI",
+  enable_autosnippets = true,
+})
+
+vim.keymap.set({"i"}, "<C-K>", function() ls.expand() end, {silent = true})
+vim.keymap.set({"i", "s"}, "<C-L>", function() ls.jump(1) end, {silent = true})
+vim.keymap.set({"i", "s"}, "<C-J>", function() ls.jump(-1) end, {silent = true})
+
+vim.keymap.set({"i", "s"}, "<C-E>", function()
+	if ls.choice_active() then
+		ls.change_choice(1)
+	end
+end, {silent = true})
+
+
 local date = function() return {os.date('%Y-%m-%d')} end
-local labels = snip("klabel", 
-fmt(
-[[
-  labels:
-    {}: {}
-]], {insert(1), insert(2)}))
---local sig = snip("signature", "-- TH, ", date) 
+-- local sig = snip("signature", "-- TH, ", date) 
+-- local labels = snip("klabel",
+-- fmt(
+-- [[
+--   labels:
+--     {}: {}
+-- ]], {insert(1), insert(2)}))
+
+local tag_brain = snip("tags-brain",
+  fmt([[
+  ---
+  tags: 
+  - {}
+  ---
+
+  ]],
+  {
+    insert(1)
+  }
+  ))
+
+local daylog = snip({ trig="daylog", desc="Tag and date header for vimwiki daylog"},
+  fmt([[
+  ---
+  tags: 
+  - daylog
+  ---
+  # {}
+
+  ]],
+  {
+    func(date, {})
+  }
+  ))
+
 ls.add_snippets(nil, {
   all = {
     snip(
@@ -34,9 +79,9 @@ ls.add_snippets(nil, {
         policyTypes:
         - Ingress # no rules means deny-all
         - Egress # no rules means deny-all
-      ]], 
+      ]],
       {
-        insert(1,namespace),
+        insert(1,"namespace"),
       })
     ),
     snip(
@@ -57,5 +102,17 @@ ls.add_snippets(nil, {
       })
     ),
   },
+  go = {
+    snip("ife",
+    fmta([[
+    if err != nil:
+      return (err)
+    end
+    ]],
+    {})
+    )
+  },
+  vimwiki = {
+    daylog,
+  },
 })
-
