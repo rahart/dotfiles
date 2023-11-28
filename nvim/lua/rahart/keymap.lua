@@ -1,7 +1,11 @@
 -- Insert mode
 vim.keymap.set("i", "<C-c>", "<Esc>")
-vim.keymap.set("i", "<C-d>", "<cmd>r!date<CR>") -- use date snippet instead of this shortcut.
-vim.api.nvim_set_keymap("i", "<C-M>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+
+-- Copilot
+vim.keymap.set("n", "<leader>cd", "<cmd>Copilot disable<cr>")
+vim.keymap.set("n", "<leader>ce", "<cmd>Copilot enable<cr>")
+-- vim.api.nvim_set_keymap("i", "<C-A>", 'copilot#Accept("<CR>")', { expr = true, silent = true })
+-- Test it in the 
 
 -- Visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -17,7 +21,6 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>Y", "\"+Y")
--- vim.keymap.set("n", "", "")
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
@@ -27,9 +30,6 @@ vim.keymap.set("n", "<leader><leader>h", "<cmd>lua package.loaded.rahart=nil<cr>
 
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
---
-vim.keymap.set("n", "<leader>cd", "<cmd>Copilot disable<cr>")
-vim.keymap.set("n", "<leader>ce", "<cmd>Copilot enable<cr>")
 
 -- telecscope
 vim.keymap.set("n", "<leader>ff", ":Telescope find_files hidden=true<cr>")
@@ -49,9 +49,6 @@ vim.keymap.set("n", "<leader>ha", ":lua require('harpoon.mark').add_file()<cr>")
 
 -- File Tree
 vim.keymap.set("n", "<leader>tr", ":NvimTreeToggle<cr>")
-
--- Packer
-vim.keymap.set("n", "<C-i>", ":PackerInstall<cr>")
 
 -- Luasnip in configfile
 -- reload config
