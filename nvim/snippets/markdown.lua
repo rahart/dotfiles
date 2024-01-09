@@ -13,7 +13,7 @@ local c = ls.choice_node
 local d = ls.dynamic_node
 
 local snippets, autosnippets = {}, {}
-local group = vim.api.nvim_create_augroup("Vimwiki Snippets", {clear=true})
+local group = vim.api.nvim_create_augroup("Markdown Snippets", {clear=true})
 local file_pattern = "*.md"
 
 local tag_brain = s("tags-brain",
@@ -31,21 +31,50 @@ local tag_brain = s("tags-brain",
   ))
 table.insert(snippets, tag_brain)
 
-local daylog = s({ trig="daylog", desc="Tag and date header for vimwiki daylog"},
+local task = s("task",
   fmt([[
-  ---
-  tags: 
-  - daylog
-  ---
-  # {}
-
+  - [ ] {}
   ]],
   {
-    f(function () return os.date("%Y-%m-%d") end, {})
+    i(0)
   }
   ))
-table.insert(snippets, daylog)
+table.insert(snippets, task)
 
+local frontmatter = s("frontmatter",
+fmt([[
+---
+id: {}
+aliases:
+  - {}
+tags:
+  - {}
+---
+]],
+{
+  i(0),
+  i(1),
+  i(2)
+}
+))
+table.insert(snippets, frontmatter)
+local link = s("link",
+fmt([[ [{}]({}) ]],
+{ i(0), i(1), }
+))
+table.insert(snippets, link)
+local weekly = s("weekly", f(function()
+  return os.date "%Y-W%V"
+end))
+table.insert(snippets, weekly)
+local monthly = s("monthly", f(function()
+  return os.date "%Y-M%m"
+end))
+table.insert(snippets, monthly)
+local quarterly = s("quarterly", f(function()
+  return os.date "%Y-Q%q"
+end))
+table.insert(snippets, quarterly)
 local h1 = s("h1", fmt("# {}", {i(0)}))
 table.insert(snippets, h1)
 local h2 = s("h2", fmt("## {}", {i(0)}))

@@ -1,10 +1,13 @@
+vim.api.nvim_set_keymap("n", "<kEnter>", "<Enter>", {noremap = false, silent = true}) -- Remap for kitty 
+vim.api.nvim_set_keymap("i", "<kEnter>", "<Enter>", {noremap = false, silent = true}) -- Remap for kitty
+
 -- Insert mode
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 -- Copilot
 vim.keymap.set("n", "<leader>cd", "<cmd>Copilot disable<cr>")
 vim.keymap.set("n", "<leader>ce", "<cmd>Copilot enable<cr>")
--- vim.api.nvim_set_keymap("i", "<C-A>", 'copilot#Accept("<CR>")', { expr = true, silent = true })
+vim.api.nvim_set_keymap("i", "<C-A>", 'copilot#Accept("<CR>")', { expr = true, silent = true })
 -- Test it in the 
 
 -- Visual mode
@@ -30,9 +33,13 @@ vim.keymap.set("n", "<leader><leader>h", "<cmd>lua package.loaded.rahart=nil<cr>
 
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
+-- obsidian
+vim.keymap.set("n", "<leader>oo", "<cmd>ObsidianOpen<cr>")
+vim.keymap.set("n", "<leader>of", "<cmd>ObsidianQuickSwitch<cr>")
+vim.keymap.set("n", "<leader>os", "<cmd>ObsidianSearch<cr>")
 
 -- telecscope
-vim.keymap.set("n", "<leader>ff", ":Telescope find_files hidden=true<cr>")
+vim.keymap.set("n", "<leader>ff", ":Telescope find_files<cr>")
 vim.keymap.set("n", "<leader>gr", ":Telescope live_grep<cr>")
 vim.keymap.set("n", "<leader>gf", ":Telescope git_files<cr>")
 vim.keymap.set("n", "<leader>gc", ":Telescope git_commits<cr>")
