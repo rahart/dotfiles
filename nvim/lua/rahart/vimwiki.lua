@@ -1,7 +1,7 @@
 return {
   { "vimwiki/vimwiki", init = function()
       vim.g.vimwiki_list = {{
-          path = "/Users/travisharrington/brain",
+          path = "/home/hex/brain",
           syntax = "markdown",
           ext = ".md",
           links_space_char = "_",

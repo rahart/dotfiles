@@ -23,7 +23,7 @@ return {
     workspaces = {
       {
         name = "brain",
-        path = "/Users/travisharrington/brain",
+        path = "~/brain",
       },
     },
 
@@ -42,12 +42,12 @@ return {
       substitutions = {},
     },
 
-    completion = {
-      nvim_cmp = true,
-      min_chars = 2,
-      prepend_note_id = true,
-      new_notes_location = "current_dir",
-    },
+    -- completion = {
+    --   nvim_cmp = true,
+    --   min_chars = 2,
+    --   prepend_note_id = true,
+    --   new_notes_location = "current_dir",
+    -- },
 
     mappings = {
       -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
@@ -71,9 +71,9 @@ return {
       wrap = true,
     },
 
-    follow_url_func = function(url)
-      vim.fn.jobstart({"open", url})  -- Mac OS
-    end,
+    -- follow_url_func = function(url)
+    --   vim.fn.jobstart({"open", url})  -- Mac OS
+    -- end,
 
     ui = {
       enable = true,  -- set to false to disable all additional syntax features
